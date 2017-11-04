@@ -40,7 +40,7 @@ ffmpeg:
   
 arlo:
   username: bucksbass@gmail.com
-  password: !secrets arlo_password
+  password: !secret arlo_password
 
 camera:
   - platform: arlo
@@ -84,7 +84,7 @@ frontend:
 
 http:
   # Uncomment this to add a password (recommended!)
-  api_password: !secrets api_password
+  api_password: !secret api_password
   # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
   base_url: moyse.house
   #ssl_certificate: /config/letsencrypt/live/examplehome.duckdns.org/fullchain.pem
