@@ -1,0 +1,47 @@
+lounge_table_lamp:
+    widget_type: light
+    title: lounge table Lamp
+    entity: light.domitech_smart_led_light_bulb_zb22uk_level
+    icon_on: mdi-lamp
+    icon_off: mdi-lamp
+    on_attributes:
+      brightness: 255
+      color_temp: 276
+    
+downstairs_thermometer:
+    widget_type: climate
+    title: Downstairs
+    units: "&deg;F"
+    entity: climate.downstairs_thermostat_heating_1
+
+upstairs_thermometer:
+    widget_type: climate
+    title: Upstairs
+    units: "&deg;F"
+    entity: climate.upstairs_thermostat_heating_1
+
+basement_thermometer:
+    widget_type: climate
+    title: Basement
+    units: "&deg;F"
+    entity: climate.basement_thermostat_heating_1
+
+light_level:
+    widget_type: sensor
+    title: Light Level
+    units: "lux"
+    precision: 0
+    shorten: 1
+    entity: sensor.side_multisensor_luminance
+
+placeholder:
+    widget_type: label
+    title: Placeholder
+    widget_style: "font-size: 50%;"
+    text: Not in use    
+    
+layout:
+    #- lounge_table_lamp, scene.tv_scene, scene.downstairs_lights_off, scene.downstairs_bright, upstairs_thermometer, downstairs_thermometer, basement_thermometer, light_level  
+    - lounge_table_lamp, scene.tv_scene, scene.downstairs_lights_off, placeholder, placeholder, placeholder, placeholder, placeholder      
+    -
+    #- scene.outside_bright, scene.outside_off, scene.porch_on, scene.porch_off, input_boolean.night_outside_motion, input_boolean.guest, input_boolean.cooling, input_boolean.heating

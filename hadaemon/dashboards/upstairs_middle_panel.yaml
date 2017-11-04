@@ -1,0 +1,25 @@
+media_player:
+  title: Master Bedroom
+  widget_type: media_player
+  truncate_name: 35
+  entity: media_player.bedroom_chromecast
+  
+master_bedroom_light:
+  widget_type: light
+  title: Master bedroom light
+  entity: light.master_bedroom_white_spectrum_bulb
+  
+  
+
+upstairs_smoke_alarm:
+  title: Smoke Alarm
+  widget_type: sensor
+  entity: sensor.upstairs_smoke
+  value_style: "color: white; font-size: 150%;"
+    
+layout:
+  - media_player(2x2)
+  #- upstairs_smoke_alarm, binary_sensor.upstairs_sensor
+  -
+  - master_bedroom_light, scene.bedroom_off, office_light, light.andrew_bedside, light.wendy_bedside, light.upstairs_hall, light.office_lamp
+  - scene.upstairs_on, scene.upstairs_off, scene.upstairs_hall_dim, scene.upstairs_bright, scene.office_on, scene.office_off, scene.office_dim, scene.office_bright

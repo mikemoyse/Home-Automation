@@ -1,0 +1,53 @@
+title: Main Panel
+widget_dimensions: [1, 1]
+widget_size: [10, 10]
+widget_margins: [0, 0]
+columns: 1000
+
+switch.hboog3:
+  widget_type: switch
+  title: Boog
+  entity: switch.hboog
+  icon_on: ""
+  icon_off: ""
+  title_style: "color:black;font-size: 140%;padding-top:16px;text-align:right"
+  widget_style: "background-color:lightgreen;border-bottom-left-radius: 30px;border-top-left-radius: 30px"
+switch.hrozenhoek3:
+  widget_type: switch
+  title: Rozen
+  entity: switch.hrozenhoek
+  icon_on: ""
+  icon_off: ""
+  title_style: "color:black;font-size: 140%;padding-top:16px;text-align:right"
+  widget_style: "background-color:lightblue;border-bottom-left-radius: 30px;border-top-left-radius: 30px"
+switch.hbank3:
+  widget_type: switch
+  title: Bank
+  entity: switch.hbank
+  icon_on: ""
+  icon_off: ""
+  title_style: "color:black;font-size: 140%;padding-top:16px;text-align:left"
+  widget_style: "background-color:blue;border-bottom-right-radius: 30px;border-top-right-radius: 30px"
+switch.kachel_9_13:
+  widget_type: switch
+  title: Kachel
+  entity: switch.kachel_9_1
+  icon_on: ""
+  icon_off: ""
+  title_style: "color:black;font-size: 140%;padding-top:16px;text-align:left"
+  widget_style: "background-color:pink;border-bottom-right-radius: 30px;border-top-right-radius: 30px"
+
+label1:
+  widget_type: label
+  title: i
+  widget_style: "background-color:lightblue;border-bottom-left-radius: 30px;border-top-left-radius: 30px;border-bottom-right-radius: 30px;border-top-right-radius: 30px"
+
+
+layout:
+  - empty: 90
+  - spacer(240x50),switch.hboog3(140x50),spacer(10x50),switch.hbank3(140x50)
+  - empty: 49
+  - spacer(240x50),switch.hrozenhoek3(140x50),spacer(10x50),switch.kachel_9_13(140x50)
+  - empty: 380
+  - label1(50x50)
+  - empty: 200

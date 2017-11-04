@@ -1,0 +1,14 @@
+weather_widget:
+    widget_type: weather
+    units: "&deg;C"
+title: Hello Panel
+widget_dimensions: [120, 120]
+widget_margins: [5, 5]
+columns: 8
+
+label:
+  widget_type: label
+  text: Hello World!
+layout:
+      - clock.clock(2x1), label(1x1), switch.aeotec_zw075_smart_switch_gen5_switch, switch.relay_1_1
+      - weather.weather(2x1)

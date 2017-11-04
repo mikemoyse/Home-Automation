@@ -1,0 +1,19 @@
+AppDaemon:
+  cert_verify: False
+  disable_apps: 1
+  logfile: STDOUT
+  errorfile: STDERR
+  threads: 10
+  dash_dir: /config/hadaemon/dashboards
+  app_dir: /config/hadaemon/apps
+  api_ssl_certificate: /ssl/fullchain.pem
+  api_ssl_key: /ssl/privkey.pem 
+HASS:
+  ha_url: https://192.168.100.5:8123
+  ha_ssl_certificate: /ssl/fulchain.pem
+  ha_ssl_key: /ssl/privkey.pem
+  ha_key: B33rB311y
+HADashboard:
+  dash_url: http://192.168.100.5
+  dash_compile_on_start: 1
+  dash_force_compile: 1
