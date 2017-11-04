@@ -24,7 +24,7 @@ light.leah_white_spectrum_bulb:
   homebridge_visible: true
   
 switch.relay_1_1:
-  friendly_name: Smoke machine
+  friendly_name: Test relay
   
 sensor.dark_sky_minutely_summary:
   friendly_name: Minutely Summary  
