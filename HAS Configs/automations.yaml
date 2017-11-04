@@ -1,0 +1,69 @@
+- action:
+  - alias: turn on switch
+    data:
+      entity_id: switch.aeotec_zw075_smart_switch_gen5_switch
+    service: switch.turn_on
+  alias: Turn on music room lamp
+  condition:
+    condition: or
+    conditions:
+    - condition: sun
+      after: sunset
+      after_offset: -0:30:00
+    - condition: sun
+      before: sunrise
+      before_offset: -0:30:00
+  id: '1504546151023'
+  trigger:
+  - entity_id: binary_sensor.aeotec_zw100_multisensor_6_sensor
+    from: 'off'
+    platform: state
+    to: 'on'
+- action:
+  - data:
+      entity_id: switch.aeotec_zw075_smart_switch_gen5_switch
+    service: switch.turn_off
+  alias: Turn off music room light after delay
+  condition: []
+  id: '1504550808413'
+  trigger:
+  - entity_id: binary_sensor.aeotec_zw100_multisensor_6_sensor
+    for:
+      minutes: 10
+    from: 'on'
+    platform: state
+    to: 'off'
+- action:
+  - data:
+      entity_id: light.domitech_smart_led_light_bulb_zb22uk_level
+    service: light.turn_on
+  alias: Lounge lamp on before sunset
+  condition: []
+  id: '1505566871649'
+  trigger:
+  - event: sunset
+    offset: -00:45:00
+    platform: sun
+- action:
+  - alias: ''
+    data:
+      entity_id: input_select.house_mode
+      option: Night
+    service: input_select.select_option
+  alias: Switch to night mode
+  condition: []
+  id: '1509314249884'
+  trigger:
+  - event: sunset
+    platform: sun
+- action:
+  - data:
+      entity_id: input_select.house_mode
+      option: Morning
+    service: input_select.select_option
+  alias: Switch to morning mode
+  condition: []
+  id: '1509314312082'
+  trigger:
+  - event: sunrise
+    platform: sun

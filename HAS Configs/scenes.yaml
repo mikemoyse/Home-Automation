@@ -1,0 +1,14 @@
+- name: TV scene
+  entities:
+    light.dining_room_light: 
+      state: off
+    light.domitech_smart_led_light_bulb_zb22uk_level:
+      state: on
+      brightness: 10
+- name: Downstairs lights off
+  entities:
+    light.dining_room_light: 
+      state: off
+    light.domitech_smart_led_light_bulb_zb22uk_level:
+      state: off
+             

@@ -1,0 +1,38 @@
+light.domitech_smart_led_light_bulb_zb22uk_level:
+  friendly_name: Lounge table lamp
+  homebridge_visible: true
+  emulated_hue_hidden: false
+light.spare_room_warm_white_bulb:
+  friendly_name: Spare room light
+  homebridge_visible: true
+light.dining_room_light:
+  friendly_name: Dining room light
+  emulated_hue_hidden: false
+  homebridge_visible: true
+sensor.met_office_feels_like_temperature:
+  friendly_name: Feels Like Temperature
+sensor.met_office_temperature:
+  friendly_name: Temperature
+zwave.aeotec_zw075_smart_switch_gen5:
+  friendly_name: Music room lamp
+  homebridge_visible: true
+light.master_bedroom_white_spectrum_bulb:
+  friendly_name: Master Bedroom light
+  homebridge_visible: true
+light.leah_white_spectrum_bulb:
+  friendly_name: Leah's Bedroom light
+  homebridge_visible: true
+  
+switch.relay_1_1:
+  friendly_name: Smoke machine
+  
+sensor.dark_sky_minutely_summary:
+  friendly_name: Minutely Summary  
+
+sensor.dark_sky_hourly_summary:
+  friendly_name: Hourly Summary  
+
+scene.downstairs_lights_off:
+  emulated_hue_hidden: false
+  emulated_hue_name: "Downstairs lights off"
+  homebridge_hidden: true  

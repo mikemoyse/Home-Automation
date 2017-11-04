@@ -1,0 +1,49 @@
+
+  musicroom:
+    name: Music Room
+    icon: mdi:home
+    view: yes
+    entities:
+      - group.musicroomgrp
+
+  cameras:
+    name: Cameras
+    icon: mdi:camera
+    view: yes
+    entities:
+      - group.camerasgrp
+
+      
+  weather:
+    name: Weather
+    icon: mdi:weather-partlycloudy
+    view: yes
+    entities:
+      - group.darksky
+  
+  darksky:
+    name: Weather Data
+    entities:
+    - sensor.dark_sky_daily_summary
+#    - sensor.met_office_temperature
+#    - sensor.met_office_feels_like_temperature
+#    - sensor.met_office_humidity
+#    - sensor.met_office_probability_of_precipitation
+#    - sensor.met_office_weather
+#    - sensor.met_office_wind_speed
+#    - sensor.met_office_wind_gust
+#    - sensor.met_office_wind_direction
+    
+  musicroomgrp:
+    name: Music Room
+    entities:
+    - switch.aeotec_zw075_smart_switch_gen5_switch
+    - sensor.aeotec_zw100_multisensor_6_temperature
+    - sensor.aeotec_zw100_multisensor_6_relative_humidity
+    - sensor.aeotec_zw100_multisensor_6_luminance
+  camerasgrp:
+    name: Cameras
+    entities:
+    - camera.front
+    - camera.rear
+    

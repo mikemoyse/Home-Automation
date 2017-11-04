@@ -1,0 +1,248 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Home
+  # Location required to calculate the time the sun rises and sets
+  latitude: 51.993150
+  longitude: -0.975682
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: 87
+  # metric for Metric, imperial for Imperial
+  unit_system: metric
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: Europe/London
+  # Include the customizations.
+  customize: !include customize.yaml
+
+# Enable the config screen
+config:
+
+# Example configuration.yaml entry
+#alarm_control_panel:
+#  - platform: manual
+
+# Enable Ikea Tradfri 
+tradfri:
+  
+
+mysensors:
+  gateways:
+    #- device: '192.168.100.48'
+    - device: '/dev/ttyUSB0'
+      persistence_file: 'mysensors3.json'
+      #tcp_port: 5003
+  optimistic: false
+  persistence: true
+  retain: true
+  version: '2.0'
+#mpeg component
+ffmpeg:
+  ffmpeg_bin: /usr/bin/ffmpeg
+  
+arlo:
+  username: bucksbass@gmail.com
+  password: !secrets arlo_password
+
+camera:
+  - platform: arlo
+    ffmpeg_arguments: '-pred 1 -q:v 2'
+
+# IOS
+ios:
+
+# Zwave
+zwave:
+  usb_path: /dev/ttyACM0
+  
+# Amazon Echo example configuration.yaml entry
+#emulated_hue:
+#  host_ip: 192.168.100.5
+#  listen_port: 8300
+#  off_maps_to_on_domains:
+#    - script
+#    - scene
+#  expose_by_default: false
+#  exposed_domains:
+#    - lights
+
+emulated_hue:
+  off_maps_to_on_domains:
+    - script
+    - scene
+  exposed_domains:
+    - scene
+    #- input_boolean
+    - switch
+    #- fan
+
+
+# Example configuration.yaml entry Show links to resources in log and frontend introduction:
+device_tracker:
+  - platform: bluetooth_tracker
+
+# Enables the frontend 
+frontend:
+
+http:
+  # Uncomment this to add a password (recommended!)
+  api_password: !secrets api_password
+  # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+  base_url: moyse.house
+  #ssl_certificate: /config/letsencrypt/live/examplehome.duckdns.org/fullchain.pem
+  #ssl_key: /config/letsencrypt/live/examplehome.duckdns.org/privkey.pem
+  ssl_certificate: /ssl/fullchain.pem
+  ssl_key: /ssl/privkey.pem
+  #base_url: https://192.168.100.5:8123
+
+# Checks for available updates
+# Note: This component will send some information about your system to
+# the developers to assist with development of Home Assistant.
+# For more information, please see:
+# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
+updater:
+  # Optional, allows Home Assistant developers to focus on popular components.
+  # include_used_components: true
+
+# Discover some devices automatically
+discovery:
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time
+history:
+
+# View all events in a logbook
+logbook:
+
+# Track the sun
+sun:
+
+# Weather prediction
+#sensor:
+# - platform: yr
+
+#Met Office data
+sensor:
+# - platform: metoffice
+#   api_key: "352cf77e-0e62-43d6-8fda-4b001c41d778"
+#   monitored_conditions:
+#     - weather
+#     - temperature
+#     - feels_like_temperature
+#     - wind_speed
+#     - wind_direction
+#     - wind_gust
+#     - visibility
+#     - visibility_distance
+#     - uv
+#     - precipitation
+#     - humidity
+      
+# - platform: yr
+ 
+ - platform: darksky
+   api_key: 9c1aba5848b468606239a340f9dd36c2
+   latitude: 51.993150
+   longitude: -0.975682
+   monitored_conditions:
+     - summary
+     - icon
+     - nearest_storm_distance
+     - nearest_storm_bearing
+     - precip_type
+     - precip_intensity
+     - precip_probability
+     - temperature
+     - apparent_temperature
+     - dew_point
+     - wind_speed
+     - wind_bearing
+     - cloud_cover
+     - humidity
+     - pressure
+     - visibility
+     - ozone
+     - minutely_summary
+     - hourly_summary
+     - daily_summary
+     - temperature_max
+     - temperature_min
+     - apparent_temperature_max
+     - apparent_temperature_min
+     - precip_intensity_max
+     - uv_index
+
+ - platform: speedtest
+   server_id: 2567  
+   minute:
+     - 0
+     - 30    
+   monitored_conditions:
+     - ping 
+     - download 
+     - upload 
+
+ - platform: arlo
+   monitored_conditions:
+     - captured_today
+     - last_capture
+     - total_cameras
+     - battery_level    
+       
+# Text to speech
+tts:
+  - platform: google
+
+# Test boolean
+#input_boolean:
+#  notify_home:
+#    name: Notify when someone arrives home
+#    initial: off
+#    icon: mdi:car  
+
+binary_sensor:
+  - platform: 'bayesian'
+    prior: 0.75
+    name: "House occupied"
+    probability_threshold: 0.95
+    observations:
+      - entity_id: 'device_tracker.michaels_iphone'
+        prob_given_true: 0.99
+        prob_given_false: 0.2
+        platform: 'state'
+        to_state: 'home'
+      - entity_id: 'device_tracker.paulas_iphone'
+        prob_given_true: 0.99
+        prob_given_false: 0.2
+        platform: 'state'
+        to_state: 'home' 
+
+#input_number:
+#  hot_water_therm_setpoint:
+#    name: Hot Water Temperature
+#    initial: 55
+#    min: 30
+#    max: 70
+#    step: 1   
+#  heating_therm_setpoint:
+#    name: Heating Temperature
+#    initial: 20
+#    min: 10
+#    max: 30
+#    step: 1   
+
+input_select:
+  house_mode:
+    name: House Mode
+    options:
+     - Morning
+     - Day
+     - Evening
+     - Night     
+  
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+climate: !include climate.yaml
+

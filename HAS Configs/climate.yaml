@@ -1,0 +1,18 @@
+- platform: generic_thermostat
+  name: HotWater
+  heater: switch.relay_1_1
+  target_sensor: sensor.hot_water_temperature_sen_2_0
+  min_temp: 40
+  max_temp: 60
+  target_temp: 49
+  tolerance: 1
+  
+- platform: generic_thermostat  
+  name: Cloakroom
+  heater: switch.thermostat_test_203_2 
+  target_sensor: sensor.thermostat_test_203_1
+  min_temp: 18
+  max_temp: 25
+  target_temp: 20
+  tolerance: 0.5
+  

@@ -1,0 +1,31 @@
+'morning':
+  sequence:
+  - alias: ''
+    data:
+      entity_id: input_select.house_mode
+      option: Morning
+    service: input_select.select_option
+'day':
+  sequence:
+  - alias: ''
+    data:
+      entity_id: input_select.house_mode
+      option: Day
+    service: input_select.select_option    
+'evening':
+  sequence:
+  - alias: ''
+    data:
+      entity_id: input_select.house_mode
+      option: Evening
+    service: input_select.select_option    
+'night':
+  sequence:
+  - data:
+      entity_id: light.spare_room_warm_white_bulb
+    service: light.turn_off
+  - alias: ''
+    data:
+      entity_id: input_select.house_mode
+      option: Night
+    service: input_select.select_option
